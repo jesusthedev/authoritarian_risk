@@ -1,1 +1,39 @@
-<html>...updated content...</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Authoritarian Risk Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+  <header class="p-4 bg-zinc-900">Authoritarian Risk Dashboard</header>
+  <main class="p-4 space-y-6">
+    <section class="card">
+      <h2 class="text-xl font-bold">Fascism — bullet summary</h2>
+      <ul class="list-disc pl-5">
+        <li>Authoritarian ultranationalism</li>
+        <li>Suppression of dissent</li>
+        <li>Propaganda & scapegoats</li>
+        <li>Militarism & violence tolerance</li>
+        <li>Corporatist alignment</li>
+        <li>Cult of tradition</li>
+      </ul>
+      <a href="pages/definition.html" class="btn btn-primary mt-2 inline-block">Read full definition</a>
+    </section>
+    <section id="dashboard">
+      <h2 class="text-lg font-semibold">Dashboard</h2>
+      <canvas id="gauge"></canvas>
+      <p id="gaugeText"></p>
+      <canvas id="trend"></canvas>
+      <table class="w-full text-sm mt-4 border">
+        <thead><tr><th>Date</th><th>Category</th><th>Title</th><th>Severity</th><th>Impact</th><th>Source</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

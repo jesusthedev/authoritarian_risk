@@ -1,1 +1,24 @@
-[{ "id": "seed-1", "title": "..." }]
+[
+  {
+    "id": "1",
+    "date": "2025-08-01",
+    "category": "state_capture",
+    "title": "Schedule F style reclassification memo",
+    "severity": "high",
+    "impact": 0.8,
+    "source_outlet": "Example Outlet",
+    "source_url": "https://example.org",
+    "summary": "Intent to reclassify policy roles."
+  },
+  {
+    "id": "2",
+    "date": "2025-08-15",
+    "category": "suppression",
+    "title": "Protest designation guidance widens",
+    "severity": "medium",
+    "impact": 0.6,
+    "source_outlet": "Civil Liberties Group",
+    "source_url": "https://example.org/report",
+    "summary": "Guidance encourages aggressive charging."
+  }
+]
