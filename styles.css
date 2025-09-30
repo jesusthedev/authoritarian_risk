@@ -3,6 +3,7 @@
   all: unset;
   display: block;        /* force block layout, not inline */
   width: 100%;           /* take full container width */
+  box-sizing: border-box; /* include padding in width */
   text-align: center;    /* center the text inside */
   padding: 0.75rem 1rem; /* more breathing room */
   border-radius: .75rem;
