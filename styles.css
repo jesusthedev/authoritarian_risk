@@ -1,7 +1,22 @@
 :root { --ok:#22c55e; --warn:#eab308; --risk:#ef4444; --x:#a855f7; }
-.btn { all: unset; display:inline-block; padding:.5rem .75rem; border-radius:.75rem; border:1px solid #3f3f46; background:transparent; cursor:pointer; }
+.btn {
+  all: unset;
+  display: block;        /* force block layout, not inline */
+  width: 100%;           /* take full container width */
+  text-align: center;    /* center the text inside */
+  padding: 0.75rem 1rem; /* more breathing room */
+  border-radius: .75rem;
+  border: 1px solid #3f3f46;
+  background: transparent;
+  cursor: pointer;
+  margin-bottom: 0.5rem; /* space between stacked buttons */
+}
 .btn:hover{ background:#18181b; }
-.btn-primary { background:#f0abfc; color:#000; border-color:#e879f9; }
+.btn-primary {
+  background: #f0abfc;
+  color: #000;
+  border-color: #e879f9;
+}
 .input { width:100%; padding:.5rem .75rem; border-radius:.75rem; border:1px solid #27272a; background:#09090b; outline:none; }
 .input:focus{ box-shadow:0 0 0 2px #f0abfc55; }
 .lbl { display:block; font-size:.75rem; letter-spacing:.04em; text-transform:uppercase; color:#a1a1aa; margin-bottom:.25rem; }
