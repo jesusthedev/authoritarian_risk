@@ -1,4 +1,4 @@
-/* ARD client app v1.2.2 (curated) */
+/* ARD v1.3.0 — richer data model */
 const CATEGORIES = [
   { id: 'leader_cult', name: 'Leader Cult & Retribution', weight: 1.0 },
   { id: 'state_capture', name: 'State Capture (Civil Service/Agencies)', weight: 1.0 },
@@ -10,18 +10,17 @@ const CATEGORIES = [
 ];
 const SEV_W = { low:.25, medium:.5, high:.75, extreme:1.0 };
 const $ = (id)=>document.getElementById(id);
-let STATE = { entries: [], month: '', category: '', severity: '' };
+let STATE = { entries: [], month:'', category:'', severity:'', actor:'', state:'', confidence:'' };
 
 async function loadData(){
   try{
     const res = await fetch('data.json', {cache:'no-store'});
     STATE.entries = await res.json();
-  } catch(e){
-    console.error(e); STATE.entries = [];
-  }
+  }catch(e){ console.error('data.json load failed', e); STATE.entries = []; }
 }
 function saveData(){ localStorage.setItem('ardb.entries', JSON.stringify(STATE.entries)); }
 const fmtDate = s => new Date(s).toISOString().slice(0,10);
+function unique(list, key){ return [...new Set(list.map(x=>x[key]).filter(Boolean))]; }
 
 function computeComposite(monthStr){
   const month = monthStr || null;
@@ -30,7 +29,8 @@ function computeComposite(monthStr){
     if (month && !e.date.startsWith(month)) continue;
     const sev = SEV_W[e.severity] || .25;
     const catW = CATEGORIES.find(c=>c.id===e.category)?.weight || 1;
-    byCat.set(e.category, byCat.get(e.category) + sev * (e.impact ?? .5) * catW);
+    const impact = typeof e.impact === 'number' ? e.impact : (typeof e.impact_score === 'number' ? e.impact_score : .5);
+    byCat.set(e.category, byCat.get(e.category) + sev * impact * catW);
   }
   const total = [...byCat.values()].reduce((a,b)=>a+b,0);
   return { score: Math.min(100, Math.round(total*20)), byCat };
@@ -61,14 +61,20 @@ function renderCategories(byCat){
 }
 function renderTable(){
   const tbody=$('rows'); tbody.innerHTML='';
-  const f=STATE; const rows=STATE.entries.filter(e=>(!f.month||e.date.startsWith(f.month))&&(!f.category||e.category===f.category)&&(!f.severity||e.severity===f.severity)).sort((a,b)=>b.date.localeCompare(a.date));
+  const f=STATE;
+  const rows=STATE.entries.filter(e=>(!f.month||e.date.startsWith(f.month))&&(!f.category||e.category===f.category)&&(!f.severity||e.severity===f.severity)&&(!f.actor||e.actor===f.actor)&&(!f.state||((e.geo_state||'').toLowerCase().includes(f.state.toLowerCase())) )&&(!f.confidence||e.confidence===f.confidence)).sort((a,b)=>b.date.localeCompare(a.date));
   for(const e of rows){
     const tr=document.createElement('tr'); tr.className='border-b border-zinc-900 hover:bg-zinc-900/40';
+    const catName=(CATEGORIES.find(c=>c.id===e.category)||{}).name||e.category;
+    const conf=e.confidence||'';
     tr.innerHTML=`<td class="py-2 pr-3 whitespace-nowrap">${fmtDate(e.date)}</td>
-      <td class="py-2 pr-3">${(CATEGORIES.find(c=>c.id===e.category)||{}).name||e.category}</td>
+      <td class="py-2 pr-3">${catName}</td>
+      <td class="py-2 pr-3">${e.actor||''}${e.agency?` / ${e.agency}`:''}</td>
+      <td class="py-2 pr-3">${e.geo_state||''}</td>
       <td class="py-2 pr-3">${e.title}</td>
       <td class="py-2 pr-3"><span class="badge ${e.severity}">${e.severity}</span></td>
-      <td class="py-2 pr-3">${(e.impact??.5).toFixed(2)}</td>
+      <td class="py-2 pr-3">${(e.impact??e.impact_score??.5).toFixed(2)}</td>
+      <td class="py-2 pr-3">${conf}</td>
       <td class="py-2 pr-3 truncate max-w-[280px]"><a class="table-link" href="${e.source_url}" target="_blank" rel="noopener">${e.source_outlet||'source'}</a></td>`;
     tbody.appendChild(tr);
   }
@@ -78,7 +84,11 @@ function bindFilters(){
   $('filterMonth').addEventListener('change', e=>{ STATE.month=e.target.value; update(); });
   const cat=$('filterCategory'); cat.innerHTML='<option value="">All</option>'+CATEGORIES.map(c=>`<option value="${c.id}">${c.name}</option>`).join(''); cat.addEventListener('change', e=>{ STATE.category=e.target.value; update(); });
   $('filterSeverity').addEventListener('change', e=>{ STATE.severity=e.target.value; update(); });
-  $('btnClear').addEventListener('click', ()=>{ STATE={...STATE,month:'',category:'',severity:''}; $('filterMonth').value=''; $('filterCategory').value=''; $('filterSeverity').value=''; update(); });
+  $('filterConfidence').addEventListener('change', e=>{ STATE.confidence=e.target.value; update(); });
+  $('filterState').addEventListener('input', e=>{ STATE.state=e.target.value; update(); });
+  const actors=['executive','legislative','judiciary','state_local'];
+  const actorSel=$('filterActor'); actorSel.innerHTML='<option value="">All</option>'+actors.map(a=>`<option>${a}</option>`).join(''); actorSel.addEventListener('change', e=>{ STATE.actor=e.target.value; update(); });
+  $('btnClear').addEventListener('click', ()=>{ STATE={...STATE,month:'',category:'',severity:'',actor:'',state:'',confidence:''}; document.querySelectorAll('#filterMonth,#filterCategory,#filterSeverity,#filterActor,#filterConfidence').forEach(el=>el.value=''); $('filterState').value=''; update(); });
 }
 function bindModal(){
   const modal=document.getElementById('modal');
@@ -95,6 +105,15 @@ function bindModal(){
       title:document.getElementById('mTitle').value.trim(),
       severity:document.getElementById('mSeverity').value,
       impact:parseFloat(document.getElementById('mImpact').value),
+      actor:document.getElementById('mActor').value,
+      agency:document.getElementById('mAgency').value.trim(),
+      geo_state:document.getElementById('mState').value.trim(),
+      confidence:document.getElementById('mConfidence').value,
+      tags:document.getElementById('mTags').value.split(',').map(s=>s.trim()).filter(Boolean),
+      arrests: parseInt(document.getElementById('mArrests').value||'0',10),
+      troop_count: parseInt(document.getElementById('mTroops').value||'0',10),
+      detention_capacity_change: parseInt(document.getElementById('mDetCap').value||'0',10),
+      corroboration_count: parseInt(document.getElementById('mCorro').value||'1',10),
       source_outlet:document.getElementById('mOutlet').value.trim(),
       source_url:document.getElementById('mUrl').value.trim(),
       summary:document.getElementById('mSummary').value.trim()

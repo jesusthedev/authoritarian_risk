@@ -3,166 +3,76 @@
     "id": "eo-schedule-f-2025-01-20",
     "date": "2025-01-20",
     "category": "state_capture",
-    "title": "Executive Order reinstates Schedule F-style classification for policy roles",
+    "subtags": [
+      "civil_service",
+      "schedule_f"
+    ],
+    "actor": "executive",
+    "agency": "White House",
+    "constitution": [
+      "due_process"
+    ],
+    "trigger_type": "initiation",
+    "lag_days": 0,
     "severity": "high",
     "impact": 0.8,
+    "confidence": "primary",
+    "corroboration_count": 2,
     "source_outlet": "White House",
     "source_url": "https://www.whitehouse.gov/presidential-actions/2025/01/restoring-accountability-to-policy-influencing-positions-within-the-federal-workforce/",
-    "summary": "Reinstates and amends EO 13957 (Schedule F), enabling at-will reclassification of policy-influencing positions."
+    "geo_state": "DC",
+    "stakeholders": [
+      "federal_workforce"
+    ],
+    "summary": "Reinstates Schedule F-style classification for policy-influencing positions."
   },
   {
-    "id": "nspm-political-violence-2025-09-25",
-    "date": "2025-09-25",
-    "category": "suppression",
-    "title": "National Security Memorandum directs DOJ to broaden domestic terrorism guidance",
-    "severity": "high",
-    "impact": 0.7,
-    "source_outlet": "White House Fact Sheet",
-    "source_url": "https://www.whitehouse.gov/fact-sheets/2025/09/fact-sheet-president-donald-j-trump-develops-new-strategy-to-counter-domestic-terrorism-and-organized-political-violence/",
-    "summary": "Orders DOJ to include behaviors like organized doxing, swatting, civil disorder and property crimes in domestic terrorism priorities."
-  },
-  {
-    "id": "reuters-guard-il-2025-09-29",
+    "id": "reuters-il-guard-2025-09-29",
     "date": "2025-09-29",
     "category": "militarization",
-    "title": "Administration requests 100 U.S. troops for Illinois amid enforcement push",
+    "subtags": [
+      "guard",
+      "deployment"
+    ],
+    "actor": "executive",
+    "agency": "DOD",
+    "constitution": [
+      "assembly"
+    ],
+    "trigger_type": "response",
+    "lag_days": 1,
     "severity": "high",
     "impact": 0.6,
+    "confidence": "confirmed",
+    "corroboration_count": 2,
     "source_outlet": "Reuters",
     "source_url": "https://www.reuters.com/world/us/illinois-governor-says-trump-administration-has-requested-troop-deployment-2025-09-29/",
-    "summary": "Governor says DHS memo sought troop deployment to protect federal personnel and facilities during stepped-up operations."
+    "geo_state": "IL",
+    "troop_count": 100,
+    "summary": "Governor says administration requested troop deployment for Illinois."
   },
   {
-    "id": "opb-portland-guard-2025-09-28",
-    "date": "2025-09-28",
-    "category": "militarization",
-    "title": "Authorization of 200 National Guard members for Portland deployment",
-    "severity": "high",
-    "impact": 0.6,
-    "source_outlet": "OPB",
-    "source_url": "https://www.opb.org/article/2025/09/28/oregon-portland-sue-trump-deployment/",
-    "summary": "State and local leaders challenge the planned deployment; legal and civil-military questions raised."
-  },
-  {
-    "id": "fnn-schedulef-pushback-2025-04-22",
-    "date": "2025-04-22",
-    "category": "state_capture",
-    "title": "Unions and lawmakers move to block civil service overhaul",
-    "severity": "medium",
-    "impact": 0.5,
-    "source_outlet": "Federal News Network",
-    "source_url": "https://federalnewsnetwork.com/workforce/2025/04/unions-lawmakers-attempt-to-block-trump-administrations-civil-service-overhaul/",
-    "summary": "Opposition to Schedule-style reclassification framework; litigation and legislation discussed."
-  },
-  {
-    "id": "opb-councilor-2025-09-29",
-    "date": "2025-09-29",
-    "category": "militarization",
-    "title": "Portland councilor, Army veteran, urges troops to reject deployment",
-    "severity": "medium",
-    "impact": 0.4,
-    "source_outlet": "OPB",
-    "source_url": "https://www.opb.org/article/2025/09/29/portland-councilor-army-veteran-mitch-green-calls-service-member-reject-deployment/",
-    "summary": "Local official calls deployment unlawful and inappropriate, highlighting civil-military tension."
-  },
-  {
-    "id": "ice-nds-2025",
-    "date": "2025-06-01",
-    "category": "removal",
-    "title": "ICE publishes 2025 National Detention Standards update",
-    "severity": "medium",
-    "impact": 0.5,
-    "source_outlet": "ICE",
-    "source_url": "https://www.ice.gov/doclib/detention-standards/2025/nds2025.pdf",
-    "summary": "Agency revises detention standards; civil liberties groups scrutinize implications for detainee rights."
-  },
-  {
-    "id": "jdsupra-nspm-analysis-2025-09-26",
-    "date": "2025-09-26",
+    "id": "wh-nspm-2025-09-25",
+    "date": "2025-09-25",
     "category": "suppression",
-    "title": "Legal analysis: NSPM targets funders and coordinators via JTTF/NJTTF",
-    "severity": "high",
-    "impact": 0.6,
-    "source_outlet": "JD Supra (legal analysis)",
-    "source_url": "https://www.jdsupra.com/legalnews/presidential-memorandum-on-political-3241788/",
-    "summary": "Explains how DOJ/JTTFs may investigate organizations and funders associated with 'political violence' as defined in the memorandum."
-
-     },
-  {
-    "id": "clearances-2025-01-29",
-    "date": "2025-01-29",
-    "category": "leader_cult",
-    "title": "Administration strips security clearances from 51 former intel officials",
-    "severity": "high",
-    "impact": 0.6,
-    "source_outlet": "ABC News (analysis, cites admin actions)",
-    "source_url": "https://abcnews.go.com/Politics/trump-moved-quickly-exact-retribution-revenge-analysis/story?id=118180327",
-    "summary": "Action taken within first week; positioned publicly as part of campaign promises of 'retribution.'"
-  },
-  {
-    "id": "opm-loyalty-essays-2025-06-02",
-    "date": "2025-06-02",
-    "category": "leader_cult",
-    "title": "OPM hiring plan called a 'blatant loyalty test' by workforce experts",
-    "severity": "medium",
-    "impact": 0.5,
-    "source_outlet": "GovExec",
-    "source_url": "https://www.govexec.com/workforce/2025/06/lynch-opms-hiring-plan-includes-blatant-loyalty-test/405740/",
-    "summary": "New application prompts and Schedule-style changes seen as politicizing hiring toward presidential loyalty."
-  },
-  {
-    "id": "civil-service-reward-loyalty-2025-06-16",
-    "date": "2025-06-16",
-    "category": "leader_cult",
-    "title": "Push to 'reward loyalty' in civil service accelerates",
-    "severity": "medium",
-    "impact": 0.5,
-    "source_outlet": "Washington Post",
-    "source_url": "https://www.washingtonpost.com/politics/2025/06/16/trump-civil-service-loyalty-firings/",
-    "summary": "Reporting documents efforts to condition hiring/retention on loyalty rather than merit."
-  },
-  {
-    "id": "comey-indictment-2025-09-26",
-    "date": "2025-09-26",
-    "category": "leader_cult",
-    "title": "Justice Department indicts former FBI Director James Comey",
+    "subtags": [
+      "domestic_terrorism",
+      "political_violence"
+    ],
+    "actor": "executive",
+    "agency": "DOJ",
+    "constitution": [
+      "speech",
+      "assembly"
+    ],
+    "trigger_type": "initiation",
+    "lag_days": 0,
     "severity": "high",
     "impact": 0.7,
-    "source_outlet": "Associated Press",
-    "source_url": "https://apnews.com/article/trump-retribution-comey-e5700c9f8dff30d358d9d5f39501c16c",
-    "summary": "AP coverage situates the case within a broader 'retribution' push against longtime critics."
-  },
-  {
-    "id": "wray-remarks-2025-09-29",
-    "date": "2025-09-29",
-    "category": "leader_cult",
-    "title": "President suggests DOJ is investigating former FBI Director Wray",
-    "severity": "medium",
-    "impact": 0.4,
-    "source_outlet": "Axios",
-    "source_url": "https://www.axios.com/2025/09/29/trump-wray-fbi-doj-investigation-comey",
-    "summary": "Public remarks hint at targeting another former FBI chief; follows Comey charges."
-  },
-  {
-    "id": "staff-purge-after-activist-meeting-2025-04-03",
-    "date": "2025-04-03",
-    "category": "leader_cult",
-    "title": "Reported firing of national security staff after activist presents 'disloyalty' dossiers",
-    "severity": "medium",
-    "impact": 0.4,
-    "source_outlet": "The Guardian",
-    "source_url": "https://www.theguardian.com/us-news/2025/apr/03/laura-loomer-trump-meeting",
-    "summary": "Post-meeting dismissals framed as rooting out disloyalty inside the administration."
-  },
-  {
-    "id": "wh-disloyalty-framing-2025-04-09",
-    "date": "2025-04-09",
-    "category": "leader_cult",
-    "title": "White House fact sheet pledges to 'root out disloyalty'",
-    "severity": "medium",
-    "impact": 0.5,
+    "confidence": "primary",
+    "corroboration_count": 1,
     "source_outlet": "White House",
-    "source_url": "https://www.whitehouse.gov/fact-sheets/2025/04/fact-sheet-president-donald-j-trump-addresses-risks-associated-with-miles-taylor/",
-    "summary": "Primary source rhetoric establishing 'disloyalty' as grounds for punitive action."
+    "source_url": "https://www.whitehouse.gov/fact-sheets/2025/09/fact-sheet-president-donald-j-trump-develops-new-strategy-to-counter-domestic-terrorism-and-organized-political-violence/",
+    "summary": "Fact sheet directs DOJ to broaden domestic terrorism enforcement."
   }
 ]
