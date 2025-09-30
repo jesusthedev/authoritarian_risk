@@ -1,1 +1,126 @@
-<!doctype html><html><head><meta charset='utf-8'><title>ARD</title></head><body><h1>Authoritarian Risk Dashboard</h1><p>Enhanced build v1.2.0</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Authoritarian Risk Dashboard</title>
+  <meta name="description" content="Receipts-forward dashboard tracking authoritarian risk signals." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <style>canvas{min-height:220px;display:block}</style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+  <header class="sticky top-0 z-30 backdrop-blur bg-zinc-950/70 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
+      <a href="./" class="shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-fuchsia-500 to-indigo-500 grid place-items-center font-bold">AR</a>
+      <nav class="ml-2 flex gap-3 text-sm text-zinc-300">
+        <a class="nav" href="./pages/definition.html">Definition</a>
+        <a class="nav" href="./pages/analysis_trump_2025.html">2025 Analysis</a>
+        <a class="nav" href="./pages/sources.html">Sources</a>
+        <a class="nav" href="./pages/review.html">Review Queue</a>
+      </nav>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="btnImport" class="btn">Import JSON</button>
+        <button id="btnExport" class="btn">Export JSON</button>
+        <a class="btn" href="docs/METHODOLOGY.md" target="_blank" rel="noopener">Methodology</a>
+        <a class="btn" href="docs/SCHEMA.md" target="_blank" rel="noopener">Schema</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6 space-y-10">
+    <section class="card">
+      <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <div class="md:w-2/3">
+          <h2 class="text-xl font-semibold">Fascism — bullet summary</h2>
+          <ul class="mt-2 list-disc pl-5 text-sm leading-relaxed text-zinc-300">
+            <li><b>Authoritarian ultranationalism</b>: dictatorial leadership, enforced unity, myth of national rebirth.</li>
+            <li><b>Suppression of dissent</b>: censorship, criminalization of opposition, elections as theater.</li>
+            <li><b>Propaganda & scapegoats</b>: enemies framed as existential threats; media delegitimized.</li>
+            <li><b>Militarism & violence tolerance</b>: fetish for order, power, and force to “restore greatness.”</li>
+            <li><b>Corporatist alignment</b>: state favors loyal elites; labor rights erode.</li>
+            <li><b>Cult of tradition</b>: romanticized past used to justify present repression.</li>
+          </ul>
+        </div>
+        <div class="md:w-1/3">
+          <a href="./pages/definition.html" class="btn btn-primary w-full text-center">Read full definition</a>
+          <a href="./pages/analysis_trump_2025.html" class="btn w-full mt-2 text-center">Read 2025 analysis</a>
+          <a href="./pages/sources.html" class="btn w-full mt-2 text-center">Browse sources</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" style="content-visibility:auto;contain-intrinsic-size:1px 1200px">
+      <h2 class="text-lg font-semibold mb-3">Dashboard</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="card">
+          <div class="card-h">Composite Risk</div>
+          <canvas id="gauge"></canvas>
+          <p class="mt-2 text-sm text-zinc-400">Weighted composite of monthly signals <span id="gaugeText" class="font-semibold text-zinc-200"></span></p>
+        </div>
+        <div class="card">
+          <div class="card-h">30/60/90-day Signals</div>
+          <div class="grid grid-cols-3 text-center">
+            <div class="p-3 border-r border-zinc-800"><div id="kpi30" class="text-2xl font-bold">0</div><div class="text-xs text-zinc-400">last 30d</div></div>
+            <div class="p-3 border-r border-zinc-800"><div id="kpi60" class="text-2xl font-bold">0</div><div class="text-xs text-zinc-400">last 60d</div></div>
+            <div class="p-3"><div id="kpi90" class="text-2xl font-bold">0</div><div class="text-xs text-zinc-400">last 90d</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h">Trend</div>
+          <canvas id="trend"></canvas>
+        </div>
+      </div>
+
+      <section class="grid md:grid-cols-4 gap-3 mt-4">
+        <div><label class="lbl">Month</label><input id="filterMonth" type="month" class="input" /></div>
+        <div><label class="lbl">Category</label><select id="filterCategory" class="input"></select></div>
+        <div><label class="lbl">Severity</label><select id="filterSeverity" class="input"><option value="">All</option><option>low</option><option>medium</option><option>high</option><option>extreme</option></select></div>
+        <div class="flex items-end gap-2"><button id="btnClear" class="btn">Clear</button><button id="btnAdd" class="btn btn-primary">Add Entry</button></div>
+      </section>
+
+      <section class="grid md:grid-cols-3 gap-4 mt-4">
+        <div class="card">
+          <div class="card-h">Categories</div>
+          <div id="catGrid" class="grid gap-3"></div>
+        </div>
+        <div class="md:col-span-2 card">
+          <div class="card-h">All Entries</div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="text-left text-zinc-400 border-b border-zinc-800">
+                <tr><th class="py-2 pr-3">Date</th><th class="py-2 pr-3">Category</th><th class="py-2 pr-3">Title</th><th class="py-2 pr-3">Severity</th><th class="py-2 pr-3">Impact</th><th class="py-2 pr-3">Source</th></tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="modal" class="modal">
+    <form method="dialog" class="modal-card">
+      <div class="flex items-center justify-between"><h3 class="text-lg font-semibold">Add Entry</h3><button value="cancel" class="icon" aria-label="Close">✕</button></div>
+      <div class="grid md:grid-cols-2 gap-3 mt-3">
+        <div><label class="lbl" for="mDate">Date</label><input id="mDate" type="date" class="input" required /></div>
+        <div><label class="lbl" for="mCategory">Category</label><select id="mCategory" class="input" required></select></div>
+        <div><label class="lbl" for="mTitle">Title</label><input id="mTitle" class="input" required /></div>
+        <div><label class="lbl" for="mSeverity">Severity</label><select id="mSeverity" class="input" required><option>low</option><option>medium</option><option>high</option><option>extreme</option></select></div>
+        <div><label class="lbl" for="mImpact">Impact (0–1)</label><input id="mImpact" type="number" step="0.01" min="0" max="1" class="input" value="0.5" required /></div>
+        <div><label class="lbl" for="mOutlet">Source outlet</label><input id="mOutlet" class="input" /></div>
+        <div class="md:col-span-2"><label class="lbl" for="mUrl">Source URL</label><input id="mUrl" class="input" placeholder="https://..." required /></div>
+        <div class="md:col-span-2"><label class="lbl" for="mSummary">Summary</label><textarea id="mSummary" class="input h-28" required></textarea></div>
+      </div>
+      <div class="mt-4 flex justify-end gap-2"><button value="cancel" class="btn">Cancel</button><button id="mSave" value="default" class="btn btn-primary">Save</button></div>
+    </form>
+  </dialog>
+
+  <footer class="max-w-7xl mx-auto px-4 py-10 text-xs text-zinc-500"><p>Code MIT. Data public domain where stated. Always read sources.</p></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
