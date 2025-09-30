@@ -33,12 +33,6 @@
         "rule_of_law"
       ]
     },
-    "subtags": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "actor": {
       "type": "string",
       "enum": [
@@ -51,26 +45,6 @@
     "agency": {
       "type": "string"
     },
-    "constitution": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "rights implicated: speech, assembly, due_process, equal_protection"
-    },
-    "trigger_type": {
-      "type": "string",
-      "enum": [
-        "initiation",
-        "response",
-        "escalation"
-      ],
-      "default": "initiation"
-    },
-    "lag_days": {
-      "type": "integer",
-      "minimum": 0
-    },
     "severity": {
       "type": "string",
       "enum": [
@@ -81,11 +55,6 @@
       ]
     },
     "impact": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "impact_score": {
       "type": "number",
       "minimum": 0,
       "maximum": 1
@@ -109,42 +78,12 @@
       "type": "string",
       "format": "uri"
     },
-    "source_bias": {
-      "type": "string"
-    },
     "geo_state": {
-      "type": "string",
-      "description": "Two-letter code if US state"
-    },
-    "geo_city": {
       "type": "string"
-    },
-    "stakeholders": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "arrests": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "troop_count": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "detention_capacity_change": {
-      "type": "integer"
     },
     "summary": {
       "type": "string"
-    },
-    "tags": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": true
 }

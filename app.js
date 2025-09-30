@@ -1,4 +1,4 @@
-/* ARD v1.3.0 — richer data model */
+/* ARD v1.3.1 fused — richer data model with populated content */
 const CATEGORIES = [
   { id: 'leader_cult', name: 'Leader Cult & Retribution', weight: 1.0 },
   { id: 'state_capture', name: 'State Capture (Civil Service/Agencies)', weight: 1.0 },
@@ -20,7 +20,6 @@ async function loadData(){
 }
 function saveData(){ localStorage.setItem('ardb.entries', JSON.stringify(STATE.entries)); }
 const fmtDate = s => new Date(s).toISOString().slice(0,10);
-function unique(list, key){ return [...new Set(list.map(x=>x[key]).filter(Boolean))]; }
 
 function computeComposite(monthStr){
   const month = monthStr || null;

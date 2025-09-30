@@ -3,76 +3,101 @@
     "id": "eo-schedule-f-2025-01-20",
     "date": "2025-01-20",
     "category": "state_capture",
-    "subtags": [
-      "civil_service",
-      "schedule_f"
-    ],
     "actor": "executive",
     "agency": "White House",
-    "constitution": [
-      "due_process"
-    ],
-    "trigger_type": "initiation",
-    "lag_days": 0,
     "severity": "high",
     "impact": 0.8,
     "confidence": "primary",
-    "corroboration_count": 2,
+    "corroboration_count": 1,
     "source_outlet": "White House",
     "source_url": "https://www.whitehouse.gov/presidential-actions/2025/01/restoring-accountability-to-policy-influencing-positions-within-the-federal-workforce/",
-    "geo_state": "DC",
-    "stakeholders": [
-      "federal_workforce"
-    ],
-    "summary": "Reinstates Schedule F-style classification for policy-influencing positions."
+    "summary": "Reinstates and amends Schedule F-style classification for policy-influencing positions."
   },
   {
-    "id": "reuters-il-guard-2025-09-29",
-    "date": "2025-09-29",
-    "category": "militarization",
-    "subtags": [
-      "guard",
-      "deployment"
-    ],
-    "actor": "executive",
-    "agency": "DOD",
-    "constitution": [
-      "assembly"
-    ],
-    "trigger_type": "response",
-    "lag_days": 1,
-    "severity": "high",
-    "impact": 0.6,
-    "confidence": "confirmed",
-    "corroboration_count": 2,
-    "source_outlet": "Reuters",
-    "source_url": "https://www.reuters.com/world/us/illinois-governor-says-trump-administration-has-requested-troop-deployment-2025-09-29/",
-    "geo_state": "IL",
-    "troop_count": 100,
-    "summary": "Governor says administration requested troop deployment for Illinois."
-  },
-  {
-    "id": "wh-nspm-2025-09-25",
+    "id": "nspm-political-violence-2025-09-25",
     "date": "2025-09-25",
     "category": "suppression",
-    "subtags": [
-      "domestic_terrorism",
-      "political_violence"
-    ],
     "actor": "executive",
     "agency": "DOJ",
-    "constitution": [
-      "speech",
-      "assembly"
-    ],
-    "trigger_type": "initiation",
-    "lag_days": 0,
     "severity": "high",
     "impact": 0.7,
     "confidence": "primary",
     "corroboration_count": 1,
-    "source_outlet": "White House",
+    "source_outlet": "White House Fact Sheet",
     "source_url": "https://www.whitehouse.gov/fact-sheets/2025/09/fact-sheet-president-donald-j-trump-develops-new-strategy-to-counter-domestic-terrorism-and-organized-political-violence/",
-    "summary": "Fact sheet directs DOJ to broaden domestic terrorism enforcement."
+    "summary": "Directs DOJ to broaden domestic terrorism guidance and priorities."
+  },
+  {
+    "id": "reuters-guard-il-2025-09-29",
+    "date": "2025-09-29",
+    "category": "militarization",
+    "actor": "executive",
+    "agency": "DOD",
+    "geo_state": "IL",
+    "severity": "high",
+    "impact": 0.6,
+    "confidence": "confirmed",
+    "corroboration_count": 1,
+    "source_outlet": "Reuters",
+    "source_url": "https://www.reuters.com/world/us/illinois-governor-says-trump-administration-has-requested-troop-deployment-2025-09-29/",
+    "summary": "Illinois governor says administration requested troop deployment to protect federal personnel/facilities."
+  },
+  {
+    "id": "opb-portland-guard-2025-09-28",
+    "date": "2025-09-28",
+    "category": "militarization",
+    "actor": "executive",
+    "agency": "DOD",
+    "geo_state": "OR",
+    "severity": "high",
+    "impact": 0.6,
+    "confidence": "confirmed",
+    "corroboration_count": 1,
+    "source_outlet": "OPB",
+    "source_url": "https://www.opb.org/article/2025/09/28/oregon-portland-sue-trump-deployment/",
+    "summary": "200 National Guard members authorized for Portland deployment; facing state and local challenges."
+  },
+  {
+    "id": "opb-councilor-2025-09-29",
+    "date": "2025-09-29",
+    "category": "militarization",
+    "actor": "state_local",
+    "agency": "Portland City Council",
+    "geo_state": "OR",
+    "severity": "medium",
+    "impact": 0.4,
+    "confidence": "confirmed",
+    "corroboration_count": 1,
+    "source_outlet": "OPB",
+    "source_url": "https://www.opb.org/article/2025/09/29/portland-councilor-army-veteran-mitch-green-calls-service-member-reject-deployment/",
+    "summary": "Local official urges troops to reject deployment as unlawful/inappropriate."
+  },
+  {
+    "id": "ice-nds-2025",
+    "date": "2025-06-01",
+    "category": "removal",
+    "actor": "executive",
+    "agency": "ICE",
+    "severity": "medium",
+    "impact": 0.5,
+    "confidence": "primary",
+    "corroboration_count": 1,
+    "source_outlet": "ICE",
+    "source_url": "https://www.ice.gov/doclib/detention-standards/2025/nds2025.pdf",
+    "summary": "ICE publishes 2025 National Detention Standards."
+  },
+  {
+    "id": "jdsupra-nspm-analysis-2025-09-26",
+    "date": "2025-09-26",
+    "category": "suppression",
+    "actor": "judiciary",
+    "agency": "Analysis",
+    "severity": "high",
+    "impact": 0.6,
+    "confidence": "analysis",
+    "corroboration_count": 1,
+    "source_outlet": "JD Supra",
+    "source_url": "https://www.jdsupra.com/legalnews/presidential-memorandum-on-political-3241788/",
+    "summary": "Legal analysis argues JTTF/NJTTF could target coordinators and funders."
   }
 ]
