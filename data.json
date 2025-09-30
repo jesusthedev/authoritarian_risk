@@ -1,24 +1,90 @@
 [
   {
-    "id": "seed-1",
-    "date": "2025-08-01",
+    "id": "eo-schedule-f-2025-01-20",
+    "date": "2025-01-20",
     "category": "state_capture",
-    "title": "Schedule F style reclassification memo signaled",
+    "title": "Executive Order reinstates Schedule F-style classification for policy roles",
     "severity": "high",
     "impact": 0.8,
-    "source_outlet": "Example Outlet",
-    "source_url": "https://example.org/article",
-    "summary": "Administration indicates intent to reclassify policy roles to at-will, enabling political purges of career staff."
+    "source_outlet": "White House",
+    "source_url": "https://www.whitehouse.gov/presidential-actions/2025/01/restoring-accountability-to-policy-influencing-positions-within-the-federal-workforce/",
+    "summary": "Reinstates and amends EO 13957 (Schedule F), enabling at-will reclassification of policy-influencing positions."
   },
   {
-    "id": "seed-2",
-    "date": "2025-08-15",
+    "id": "nspm-political-violence-2025-09-25",
+    "date": "2025-09-25",
     "category": "suppression",
-    "title": "Protest designation guidance widens \u2018domestic extremism\u2019 scope",
-    "severity": "medium",
+    "title": "National Security Memorandum directs DOJ to broaden domestic terrorism guidance",
+    "severity": "high",
+    "impact": 0.7,
+    "source_outlet": "White House Fact Sheet",
+    "source_url": "https://www.whitehouse.gov/fact-sheets/2025/09/fact-sheet-president-donald-j-trump-develops-new-strategy-to-counter-domestic-terrorism-and-organized-political-violence/",
+    "summary": "Orders DOJ to include behaviors like organized doxing, swatting, civil disorder and property crimes in domestic terrorism priorities."
+  },
+  {
+    "id": "reuters-guard-il-2025-09-29",
+    "date": "2025-09-29",
+    "category": "militarization",
+    "title": "Administration requests 100 U.S. troops for Illinois amid enforcement push",
+    "severity": "high",
     "impact": 0.6,
-    "source_outlet": "Example Civil Liberties Group",
-    "source_url": "https://example.org/report",
-    "summary": "Guidance encourages aggressive charging strategies for demonstration-related offenses; rights groups warn chilling effects."
+    "source_outlet": "Reuters",
+    "source_url": "https://www.reuters.com/world/us/illinois-governor-says-trump-administration-has-requested-troop-deployment-2025-09-29/",
+    "summary": "Governor says DHS memo sought troop deployment to protect federal personnel and facilities during stepped-up operations."
+  },
+  {
+    "id": "opb-portland-guard-2025-09-28",
+    "date": "2025-09-28",
+    "category": "militarization",
+    "title": "Authorization of 200 National Guard members for Portland deployment",
+    "severity": "high",
+    "impact": 0.6,
+    "source_outlet": "OPB",
+    "source_url": "https://www.opb.org/article/2025/09/28/oregon-portland-sue-trump-deployment/",
+    "summary": "State and local leaders challenge the planned deployment; legal and civil-military questions raised."
+  },
+  {
+    "id": "fnn-schedulef-pushback-2025-04-22",
+    "date": "2025-04-22",
+    "category": "state_capture",
+    "title": "Unions and lawmakers move to block civil service overhaul",
+    "severity": "medium",
+    "impact": 0.5,
+    "source_outlet": "Federal News Network",
+    "source_url": "https://federalnewsnetwork.com/workforce/2025/04/unions-lawmakers-attempt-to-block-trump-administrations-civil-service-overhaul/",
+    "summary": "Opposition to Schedule-style reclassification framework; litigation and legislation discussed."
+  },
+  {
+    "id": "opb-councilor-2025-09-29",
+    "date": "2025-09-29",
+    "category": "militarization",
+    "title": "Portland councilor, Army veteran, urges troops to reject deployment",
+    "severity": "medium",
+    "impact": 0.4,
+    "source_outlet": "OPB",
+    "source_url": "https://www.opb.org/article/2025/09/29/portland-councilor-army-veteran-mitch-green-calls-service-member-reject-deployment/",
+    "summary": "Local official calls deployment unlawful and inappropriate, highlighting civil-military tension."
+  },
+  {
+    "id": "ice-nds-2025",
+    "date": "2025-06-01",
+    "category": "removal",
+    "title": "ICE publishes 2025 National Detention Standards update",
+    "severity": "medium",
+    "impact": 0.5,
+    "source_outlet": "ICE",
+    "source_url": "https://www.ice.gov/doclib/detention-standards/2025/nds2025.pdf",
+    "summary": "Agency revises detention standards; civil liberties groups scrutinize implications for detainee rights."
+  },
+  {
+    "id": "jdsupra-nspm-analysis-2025-09-26",
+    "date": "2025-09-26",
+    "category": "suppression",
+    "title": "Legal analysis: NSPM targets funders and coordinators via JTTF/NJTTF",
+    "severity": "high",
+    "impact": 0.6,
+    "source_outlet": "JD Supra (legal analysis)",
+    "source_url": "https://www.jdsupra.com/legalnews/presidential-memorandum-on-political-3241788/",
+    "summary": "Explains how DOJ/JTTFs may investigate organizations and funders associated with 'political violence' as defined in the memorandum."
   }
 ]

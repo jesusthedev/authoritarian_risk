@@ -1,2 +1,2 @@
 # Workflows
-Deploy via Pages, ingest nightly, validate JSON in CI.
+Deploy via Pages; validate JSON and update sources via PRs.

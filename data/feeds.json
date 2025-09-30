@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "Reuters U.S.",
+    "url": "https://www.reuters.com/rssFeed/usNews"
+  },
+  {
+    "name": "AP Politics",
+    "url": "https://apnews.com/hub/politics/rss"
+  }
+]

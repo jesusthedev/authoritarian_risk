@@ -3,7 +3,7 @@
   <main class="max-w-6xl mx-auto px-4 py-8 space-y-6">
     <a href="../index.html" class="text-sm text-zinc-400">← Back to Dashboard</a>
     <h1 class="text-2xl font-semibold">Review Queue</h1>
-    <p class="text-zinc-300">RSS-ingested items land here. Use Export to create JSON for PR into <code>data.json</code>.</p>
+    <p class="text-zinc-300">Promote selected items to <code>data.json</code> as fully sourced entries.</p>
     <div class="flex gap-2">
       <input id="q" placeholder="Filter…" class="input"/>
       <button id="exportSel" class="btn btn-primary">Export selected → JSON</button>
@@ -27,8 +27,15 @@
     document.getElementById('exportSel').addEventListener('click',()=>{
       const ids=[...document.querySelectorAll('input[type="checkbox"]:checked')].map(x=>x.dataset.id);
       const sel=items.filter(it=>ids.includes(it.id)).map(it=>({
-        id: crypto.randomUUID(), date: it.date, category: 'propaganda', title: it.title, severity: 'medium', impact: 0.5,
-        source_outlet: it.source, source_url: it.url, summary: it.summary||''
+        id: crypto.randomUUID(),
+        date: it.date,
+        category: 'propaganda',
+        title: it.title,
+        severity: 'medium',
+        impact: 0.5,
+        source_outlet: it.source,
+        source_url: it.url,
+        summary: it.summary||''
       }));
       const blob=new Blob([JSON.stringify(sel,null,2)],{type:'application/json'});
       const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='review-promoted.json'; a.click(); URL.revokeObjectURL(a.href);
