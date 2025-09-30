@@ -1,3 +1,3 @@
 # Workflows
-- Validate JSON against schema.
-- Submit PRs with new entries.
+- GitHub Action validates `data.json` against the schema using `ajv-cli`.
+- Add entries via PRs; CI blocks invalid JSON.

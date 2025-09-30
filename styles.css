@@ -1,5 +1,6 @@
 :root { --ok:#22c55e; --warn:#eab308; --risk:#ef4444; --x:#a855f7; }
-.btn { all: unset; display:block; width:100%; box-sizing:border-box; text-align:center; padding:.75rem 1rem; border-radius:.75rem; border:1px solid #3f3f46; background:transparent; cursor:pointer; margin-bottom:.5rem; }
+*{box-sizing:border-box}
+.btn { all: unset; display:block; width:100%; text-align:center; padding:.75rem 1rem; border-radius:.75rem; border:1px solid #3f3f46; background:transparent; cursor:pointer; margin-bottom:.5rem; }
 .btn:hover{ background:#18181b; }
 .btn-primary { background:#f0abfc; color:#000; border-color:#e879f9; }
 .input { width:100%; padding:.5rem .75rem; border-radius:.75rem; border:1px solid #27272a; background:#09090b; outline:none; }
@@ -7,12 +8,20 @@
 .lbl { display:block; font-size:.75rem; letter-spacing:.04em; text-transform:uppercase; color:#a1a1aa; margin-bottom:.25rem; }
 .card { border:1px solid #27272a; background:#0b0b0f80; border-radius:1rem; padding:1rem; }
 .card-h { color:#a1a1aa; font-size:.9rem; margin-bottom:.5rem; }
-.table-link { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
-.badge { padding:.15rem .5rem; border-radius:.5rem; font-size:.75rem; border:1px solid #3f3f46; }
+.table-link { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block; max-width:260px;}
+.badge { padding:.15rem .5rem; border-radius:.5rem; font-size:.75rem; border:1px solid #3f3f46; white-space:nowrap; }
 .badge.low { background:#1f2937; color:#d1d5db; }
 .badge.medium { background:#854d0e33; color:#fbbf24; border-color:#f59e0b50; }
 .badge.high { background:#7f1d1d33; color:#fca5a5; border-color:#ef444450; }
 .badge.extreme { background:#581c8733; color:#e9d5ff; border-color:#a855f750; }
+.badge.primary { background:#14532d; color:#86efac; border-color:#22c55e88;}
+.badge.confirmed { background:#1e293b; color:#93c5fd; border-color:#60a5fa88;}
+.badge.analysis { background:#3f1d00; color:#fdba74; border-color:#fb923c88;}
 .tag { display:inline-block; padding:.15rem .5rem; border-radius:.5rem; border:1px solid #3f3f46; margin:.1rem; font-size:.7rem; color:#cbd5e1; }
 .grid4 { display:grid; gap:12px; grid-template-columns: repeat(4, minmax(0,1fr)); }
-@media (max-width: 960px){ .grid4 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 1024px){ .grid4 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px){ .grid4 { grid-template-columns: 1fr; } }
+th.sortable { cursor:pointer }
+th.sortable .arrow{ font-size:.8rem; opacity:.6; margin-left:.25rem }
+.trunc { max-width: 320px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.visually-hidden { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;}
