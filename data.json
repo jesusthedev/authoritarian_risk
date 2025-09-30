@@ -86,5 +86,83 @@
     "source_outlet": "JD Supra (legal analysis)",
     "source_url": "https://www.jdsupra.com/legalnews/presidential-memorandum-on-political-3241788/",
     "summary": "Explains how DOJ/JTTFs may investigate organizations and funders associated with 'political violence' as defined in the memorandum."
+
+    [
+  {
+    "id": "clearances-2025-01-29",
+    "date": "2025-01-29",
+    "category": "leader_cult",
+    "title": "Administration strips security clearances from 51 former intel officials",
+    "severity": "high",
+    "impact": 0.6,
+    "source_outlet": "ABC News (analysis, cites admin actions)",
+    "source_url": "https://abcnews.go.com/Politics/trump-moved-quickly-exact-retribution-revenge-analysis/story?id=118180327",
+    "summary": "Action taken within first week; positioned publicly as part of campaign promises of 'retribution.'"
+  },
+  {
+    "id": "opm-loyalty-essays-2025-06-02",
+    "date": "2025-06-02",
+    "category": "leader_cult",
+    "title": "OPM hiring plan called a 'blatant loyalty test' by workforce experts",
+    "severity": "medium",
+    "impact": 0.5,
+    "source_outlet": "GovExec",
+    "source_url": "https://www.govexec.com/workforce/2025/06/lynch-opms-hiring-plan-includes-blatant-loyalty-test/405740/",
+    "summary": "New application prompts and Schedule-style changes seen as politicizing hiring toward presidential loyalty."
+  },
+  {
+    "id": "civil-service-reward-loyalty-2025-06-16",
+    "date": "2025-06-16",
+    "category": "leader_cult",
+    "title": "Push to 'reward loyalty' in civil service accelerates",
+    "severity": "medium",
+    "impact": 0.5,
+    "source_outlet": "Washington Post",
+    "source_url": "https://www.washingtonpost.com/politics/2025/06/16/trump-civil-service-loyalty-firings/",
+    "summary": "Reporting documents efforts to condition hiring/retention on loyalty rather than merit."
+  },
+  {
+    "id": "comey-indictment-2025-09-26",
+    "date": "2025-09-26",
+    "category": "leader_cult",
+    "title": "Justice Department indicts former FBI Director James Comey",
+    "severity": "high",
+    "impact": 0.7,
+    "source_outlet": "Associated Press",
+    "source_url": "https://apnews.com/article/trump-retribution-comey-e5700c9f8dff30d358d9d5f39501c16c",
+    "summary": "AP coverage situates the case within a broader 'retribution' push against longtime critics."
+  },
+  {
+    "id": "wray-remarks-2025-09-29",
+    "date": "2025-09-29",
+    "category": "leader_cult",
+    "title": "President suggests DOJ is investigating former FBI Director Wray",
+    "severity": "medium",
+    "impact": 0.4,
+    "source_outlet": "Axios",
+    "source_url": "https://www.axios.com/2025/09/29/trump-wray-fbi-doj-investigation-comey",
+    "summary": "Public remarks hint at targeting another former FBI chief; follows Comey charges."
+  },
+  {
+    "id": "staff-purge-after-activist-meeting-2025-04-03",
+    "date": "2025-04-03",
+    "category": "leader_cult",
+    "title": "Reported firing of national security staff after activist presents 'disloyalty' dossiers",
+    "severity": "medium",
+    "impact": 0.4,
+    "source_outlet": "The Guardian",
+    "source_url": "https://www.theguardian.com/us-news/2025/apr/03/laura-loomer-trump-meeting",
+    "summary": "Post-meeting dismissals framed as rooting out disloyalty inside the administration."
+  },
+  {
+    "id": "wh-disloyalty-framing-2025-04-09",
+    "date": "2025-04-09",
+    "category": "leader_cult",
+    "title": "White House fact sheet pledges to 'root out disloyalty'",
+    "severity": "medium",
+    "impact": 0.5,
+    "source_outlet": "White House",
+    "source_url": "https://www.whitehouse.gov/fact-sheets/2025/04/fact-sheet-president-donald-j-trump-addresses-risks-associated-with-miles-taylor/",
+    "summary": "Primary source rhetoric establishing 'disloyalty' as grounds for punitive action."
   }
 ]
