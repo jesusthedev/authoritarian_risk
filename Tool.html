@@ -1,0 +1,203 @@
+You want a tooltip that doesn’t drop down like a sad accordion but punches through the screen in 3D. Good. Menus should have ambition. Here are three production-ready patterns that fit that clean, blue, rounded “Performance Excellence” vibe in your screenshot.
+
+1) Pop-Card (forward-pop with parallax)
+
+A glassy card that animates toward the user with depth blur, soft blue rim light, and subtle parallax to sell the 3D.
+
+Why it matches: rounded corners, gentle gradients, light background, corporate-friendly blue glow, no circus tricks.
+
+<!-- Trigger -->
+<button class="peh-trigger" aria-describedby="tt-webstats">Need Support? Click Here</button>
+
+<!-- Tooltip -->
+<div id="tt-webstats" role="tooltip" class="peh-tooltip" data-theme="blue">
+  <div class="peh-tooltip__header">
+    <img src="icon-scorecard.svg" alt="" aria-hidden="true" />
+    <span>Scorecard COE</span>
+  </div>
+  <p>Get help with dashboards, lock dates, and intake.</p>
+  <a href="#" class="peh-cta">Open Portal</a>
+</div>
+
+:root{
+  --peh-bg: rgba(255,255,255,0.8);
+  --peh-blur: 10px;
+  --peh-blue: #1e63ff;
+  --peh-shadow: 0 10px 30px rgba(17,38,146,0.20), 0 2px 6px rgba(0,0,0,0.06);
+  --peh-radius: 18px;
+  --peh-zpop: 40px; /* forward distance */
+}
+
+.peh-trigger { 
+  position: relative;
+  border: 0; background: transparent; color: #0b2d76; 
+  font-weight: 700; cursor: pointer;
+}
+
+/* Base state: parked slightly back in 3D so the "pop" has somewhere to go */
+.peh-tooltip{
+  position: absolute;
+  inset: auto auto 100% 0; /* park above trigger but hidden via opacity */
+  transform-style: preserve-3d;
+  transform: translateZ(-20px) scale(0.98) rotateX(2deg);
+  opacity: 0; pointer-events: none;
+  width: 320px; padding: 16px;
+  border-radius: var(--peh-radius);
+  background: var(--peh-bg);
+  backdrop-filter: blur(var(--peh-blur));
+  box-shadow: var(--peh-shadow);
+  border: 1px solid rgba(30,99,255,0.15);
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), opacity .18s ease-out, box-shadow .28s ease;
+}
+
+/* Forward pop on hover/focus of trigger */
+.peh-trigger:is(:hover,:focus-visible) + .peh-tooltip,
+.peh-tooltip:focus-within{
+  opacity: 1; pointer-events: auto;
+  transform: translateZ(var(--peh-zpop)) scale(1) rotateX(0deg);
+  box-shadow: 0 18px 55px rgba(17,38,146,0.28), 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Parallax layers */
+.peh-tooltip::before{
+  content:"";
+  position:absolute; inset:-1px; border-radius: inherit;
+  background: radial-gradient(120% 80% at 20% -10%, rgba(30,99,255,0.18) 0%, transparent 60%);
+  transform: translateZ(15px);
+  pointer-events:none;
+}
+.peh-tooltip__header{ display:flex; gap:10px; align-items:center; transform: translateZ(22px); }
+.peh-tooltip p{ margin:10px 0 12px; transform: translateZ(18px); }
+.peh-cta{
+  display:inline-block; padding:8px 12px; border-radius:12px; font-weight:700;
+  text-decoration:none; color:white; background: linear-gradient(135deg,#1e63ff,#5aa1ff);
+  transform: translateZ(26px);
+}
+
+/* Accessibility: respects reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .peh-tooltip, .peh-tooltip::before, .peh-tooltip *{ transition:none !important; transform:none !important; }
+}
+
+// Optional: mouse parallax to sweeten the 3D illusion.
+document.querySelectorAll('.peh-trigger + .peh-tooltip').forEach(tt=>{
+  const max = 6; // deg/px tilt
+  tt.parentElement.addEventListener('mousemove',e=>{
+    const r = tt.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    tt.style.transform = `translateZ(40px) rotateX(${ -y*max }deg) rotateY(${ x*max }deg)`;
+  });
+  tt.parentElement.addEventListener('mouseleave',()=> tt.style.transform = '');
+});
+
+Usage: place the tooltip immediately after its trigger so the sibling selector works and positioning stays sane.
+
+
+---
+
+2) Info-Cube (thin 3D slab that slides forward)
+
+A super-subtle “card becomes a slab” effect. Minimal motion, strong depth cue.
+
+.infocube{
+  --d: 24px;
+  position:absolute; width:300px; padding:16px; border-radius:16px;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  box-shadow: 0 8px 24px rgba(17,38,146,.20);
+  transform: perspective(700px) translateZ(-10px) rotateX(1deg);
+  opacity:0; pointer-events:none; transition: transform .22s ease, opacity .12s ease;
+}
+.trigger:is(:hover,:focus-visible) + .infocube{
+  opacity:1; pointer-events:auto;
+  transform: perspective(700px) translateZ(var(--d)) rotateX(0);
+}
+.infocube::after{ /* fake thickness edge */
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  box-shadow: inset 0 0 0 1px rgba(30,99,255,.15), 0 0 0 2px rgba(255,255,255,.6);
+}
+
+When to use: compact tooltips near those “Need Support?” pills where you want elegance, not fireworks.
+
+
+---
+
+3) Spotlight Panel (forward pop + ambient glow)
+
+Adds a subtle screen-space glow ring that feels native to your blue brand.
+
+.spotlight-tip{
+  position:absolute; width:320px; padding:16px; border-radius:18px;
+  background: rgba(255,255,255,.85); backdrop-filter: blur(8px);
+  border:1px solid rgba(30,99,255,.18);
+  transform: translateZ(-15px) scale(.98);
+  opacity:0; transition: transform .26s cubic-bezier(.2,.8,.2,1), opacity .14s ease;
+}
+.spotlight-tip::before{
+  content:""; position:absolute; inset:-24px; border-radius:28px; 
+  background: radial-gradient(220px 160px at 20% 0%, rgba(30,99,255,.22), transparent 60%);
+  filter: blur(18px); opacity:.0; transition: opacity .26s ease;
+}
+.trigger:is(:hover,:focus-visible) + .spotlight-tip{
+  opacity:1; transform: translateZ(32px) scale(1);
+}
+.trigger:is(:hover,:focus-visible) + .spotlight-tip::before{ opacity:1; }
+
+
+---
+
+Implementation notes that keep this from breaking in prod
+
+Stacking context: create a local 3D stage so forward-popping cards don’t get clipped.
+
+.peh-stage{ position:relative; perspective: 900px; transform-style: preserve-3d; z-index:0; }
+.peh-stage *{ isolation: isolate; } /* helps with blurred layers */
+
+Wrap each trigger + tooltip in .peh-stage.
+
+Focus & keyboard: add aria-describedby on the trigger, role="tooltip" on the card, and keep it in the DOM (opacity/transform only) so screen readers don’t lose it. Close on Escape if you wire it modal-style.
+
+Motion safety: prefers-reduced-motion already handled. Keep transform-only animations to dodge layout thrash.
+
+Shadow recipe: your screenshot wants soft, optimistic shadows. Keep multi-shadow stacks under 60px blur to avoid muddy gray.
+
+Brand tune: swap --peh-blue to your exact hex, and tighten borders to .12–.18 alpha for that clean enterprise gloss.
+
+
+
+---
+
+Quick drop-in scaffold (repeatable)
+
+<div class="peh-stage">
+  <button class="peh-trigger" aria-describedby="tt1">Need Support? Click Here</button>
+  <div id="tt1" role="tooltip" class="peh-tooltip" data-theme="blue">
+    <div class="peh-tooltip__header">
+      <img src="icon-webstats.svg" alt="" aria-hidden="true" />
+      <span>WebStats – Data Excellence</span>
+    </div>
+    <p>Dates, council notes, and portal tips without the chaos.</p>
+    <a class="peh-cta" href="#">Go to WebStats</a>
+  </div>
+</div>
+
+
+---
+
+Alternate trigger interactions
+
+Press-and-hold: pop forward only while mouse is held. Good for “peek” behavior.
+
+Long-hover delay: 250 ms entrance, 150 ms exit. Reads as “intentional,” not jumpy.
+
+Sticky pin: click to pin the card in place; click outside to dismiss. Helps when there’s a lot of content.
+
+
+
+---
+
+TL;DR product speak
+
+Net-net, this is a forward-elevating micro-surface with glassmorphism and parallax that aligns to your Performance Excellence design language. It reduces cognitive load, increases affordance, and pretends CSS transforms are a personality. Which, depressingly, is better than most executives.
+
+Ship any of the three, and your tooltips will stop behaving like timid dropdowns and start acting like they’ve got a spine.
